@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Result</title>
+
+    <!-- Favicon Link -->
+    <link rel="icon" href="/static/lung-icon.ico" type="image/x-icon">
+
+    <style>
+        body {
+            background-image: url('/static/background image.jpg');
+            background-size: cover;
+            background-position: center;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.2); /* Semi-transparent background */
+            padding: 25px 35px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            max-width: 400px;
+            width: 100%;
+            backdrop-filter: blur(10px); /* Frosted Glass Effect */
+        }
+
+        .success {
+            background-color: rgba(76, 175, 80, 0.5); /* Success Green */
+        }
+
+        .danger {
+            background-color: rgba(255, 0, 0, 0.5); /* Danger Red */
+        }
+
+        h1 {
+            color: #670467;
+            font-size: 26px;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 8px rgb(252, 249, 249);
+        }
+
+        p {
+            font-size: 18px;
+            color: #fcf402;
+            margin: 10px 0;
+        }
+
+        strong {
+            color: #0826e9;
+            text-shadow: 2px 2px 8px rgb(243, 235, 235);
+
+        }
+
+        a {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background: linear-gradient(to right, #007BFF, #0056b3);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: 0.3s;
+        }
+
+        a:hover {
+            background: linear-gradient(to right, #0056b3, #003d80);
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <div class="container {{ 'success' if predicted_class == 'Normal' else 'danger' }}">
+        <h1>Prediction Result</h1>
+        <p><strong>Predicted Class:</strong> {{ predicted_class }}</p>
+        <p><strong>Confidence:</strong> {{ confidence | round(2) }}%</p>
+        <a href="/">Go Back</a>
+    </div>
+</body>
+</html>
