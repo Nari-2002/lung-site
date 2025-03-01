@@ -80,7 +80,7 @@ def predict():
         # Predict the class
         predictions = model.predict(image_data)
         predicted_class = CLASS_NAMES[np.argmax(predictions)]
-        confidence = float(np.max(predictions))
+        confidence = float(np.max(predictions)*100)
 
         # Clean up the uploaded file
         os.remove(filepath)
